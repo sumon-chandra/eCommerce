@@ -3,8 +3,7 @@ import { createContext, useEffect, useState } from "react";
 export const ProductsContext = createContext();
 
 export const ProductProvider = ({ children }) => {
-  const [products, setProducts] = useState([]);
-
+  const [categories, setCategories] = useState([]);
   useEffect(() => {
     const options = {
       method: "GET",
@@ -15,15 +14,15 @@ export const ProductProvider = ({ children }) => {
     };
 
     fetch(
-      `https://apidojo-hm-hennes-mauritz-v1.p.rapidapi.com/products/list?categories=men_all&concepts=H%26M MAN&country=us&lang=en&currentpage=1&pagesize=10`,
+      "https://apidojo-hm-hennes-mauritz-v1.p.rapidapi.com/categories/list?lang=en&country=us",
       options
     )
       .then((response) => response.json())
-      .then((data) => setProducts(data.results))
+      .then((response) => setCategories(response))
       .catch((err) => console.error(err));
   }, []);
   return (
-    <ProductsContext.Provider value={{ products }}>
+    <ProductsContext.Provider value={{ categories }}>
       {children}
     </ProductsContext.Provider>
   );

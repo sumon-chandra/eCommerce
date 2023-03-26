@@ -5,7 +5,7 @@ const NavItems = () => {
   return (
     <>
       <li>
-        <Link to="/categories">Category</Link>
+        <Link to="/category">Category</Link>
       </li>
       <li tabIndex={0}>
         <a className="justify-between">

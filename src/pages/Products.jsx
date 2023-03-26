@@ -1,17 +1,20 @@
-import React, { useContext, useEffect, useState } from "react";
-import ProductDetails from "../components/ProductDetails";
-import { ProductsContext } from "../context/productsContexts";
+import React from "react";
+import { useParams } from "react-router-dom";
 
 const Products = () => {
-  const { products } = useContext(ProductsContext);
+  const { catName } = useParams();
   return (
-    <>
-      <p>Products List</p>
-      {products.map((product) => (
-        <ProductDetails key={product.code} product={product} />
-      ))}
-    </>
+    <div>
+      <p>
+        Products of <span className="text-yellow-400 font-bold">{catName}</span>{" "}
+        Category
+      </p>
+    </div>
   );
 };
+
+// export const categoryLoader = ({ params }) => {
+
+// }
 
 export default Products;
